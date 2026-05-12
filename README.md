@@ -31,22 +31,22 @@ Laravelを用いて作成した勤怠管理アプリです。
 
 ## 環境構築
 
-1.リポジトリをクローン
+- 1.リポジトリをクローン
 
 git clone https://github.com/rikutomashio/attendance-app.git
 
 cd attendance-app
 
-2.Docker起動
+- 2.Docker起動
 
 docker-compose up -d --build
 
 
-3.PHPコンテナに入る
+- 3.PHPコンテナに入る
 
 docker-compose exec php bash
 
-4.Laravel初期設定
+- 4.Laravel初期設定
 
 composer install
 
@@ -54,7 +54,7 @@ cp .env.example .env
 
 php artisan key:generate
 
-5.DB設定（.env）
+- 5.DB設定（.env）
 
 DB_CONNECTION=mysql
 
@@ -70,7 +70,7 @@ DB_PASSWORD=laravel_pass
 
 ※.envのDB設定を必ず上記の内容に変更してください
 
-6.メール認証設定（Mailtrap）
+- 6.メール認証設定（Mailtrap）
 
 本アプリではメール認証機能にMailtrapを使用しています。
 
@@ -96,17 +96,17 @@ php artisan config:clear
 
  認証メールはMailtrapのInbox上で確認できます
 
-7.マイグレーション（シーディングも含めて）
+- 7.マイグレーション（シーディングも含めて）
 
 php artisan migrate:fresh --seed 
 
 ※既存データを削除して初期状態から構築されます
 
-8.ストレージリンク
+- 8.ストレージリンク
 
 php artisan storage:link
 
-9.動作確認
+- 9.動作確認
 
 - アプリケーション
   - http://localhost
