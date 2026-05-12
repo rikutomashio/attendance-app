@@ -64,7 +64,7 @@ php artisan storage:link
 - MySQL 8.0.26 
 - Mailtrap 
 - Feature Test
-- Formrequest
+- FormRequest
 
 ---
 
