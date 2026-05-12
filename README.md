@@ -139,6 +139,8 @@ Mailtrapを利用してメール認証機能を実装しています。
 
 会員登録後、Mailtrap上で認証メールを確認できます。
 
+---
+
 # 管理者ログイン情報
 
 email: admin@example.com
