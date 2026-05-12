@@ -70,11 +70,10 @@ php artisan storage:link
 
 # 開発環境
 
-| サービス       | URL                                            |
-| ---------- | ---------------------------------------------- |
-| アプリケーション   | [http://localhost](http://localhost)           |
-| phpMyAdmin | [http://localhost:8080](http://localhost:8080) |
-| Mailhog    | [http://localhost:8025](http://localhost:8025) |
+- アプリケーション    [http://localhost](http://localhost)           
+  ※ブラウザで http://localhost/ にアクセスしてください
+- phpMyAdmin  [http://localhost:8080](http://localhost:8080) 
+
 
 ---
 
