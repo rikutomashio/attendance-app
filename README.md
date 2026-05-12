@@ -33,7 +33,6 @@ Laravelを用いて作成した勤怠管理アプリです。
 
 ## Dockerビルド
 
-```bash
 git clone git@github.com:******/******.git
 cd attendance-app
 docker-compose up -d --build
