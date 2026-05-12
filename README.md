@@ -57,15 +57,13 @@ php artisan storage:link
 
 # 使用技術
 
-| Category       | Technology              |
-| -------------- | ----------------------- |
-| Backend        | PHP / Laravel           |
-| Frontend       | Blade / CSS             |
-| Database       | MySQL                   |
-| Environment    | Docker / Docker Compose |
-| Authentication | Laravel Fortify         |
-| Mail           | Mailhog                 |
-| Test           | PHPUnit / Feature Test  |
+
+- PHP 8.1 
+- Laravel 8.75 
+- Laravel Fortify 
+- MySQL 8.0.26 
+- Mailtrap 
+- Feature Test 
 
 ---
 
