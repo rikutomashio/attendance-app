@@ -31,7 +31,7 @@ Laravelを用いて作成した勤怠管理アプリです。
 
 ## 環境構築
 
--1.リポジトリをクローン
+- 1.リポジトリをクローン
 
 git clone https://github.com/rikutomashio/attendance-app.git
 
