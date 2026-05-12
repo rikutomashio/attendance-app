@@ -63,7 +63,8 @@ php artisan storage:link
 - Laravel Fortify 
 - MySQL 8.0.26 
 - Mailtrap 
-- Feature Test 
+- Feature Test
+- Formrequest
 
 ---
 
