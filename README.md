@@ -87,7 +87,7 @@ MAIL_PORT=2525
 MAIL_USERNAME=ご自身のユーザー名
 MAIL_PASSWORD=ご自身のパスワード
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=test@example.com
+MAIL_FROM_ADDRESS=任意のメールアドレス
 MAIL_FROM_NAME="${APP_NAME}"
 
  設定後、以下コマンドを実行してください
