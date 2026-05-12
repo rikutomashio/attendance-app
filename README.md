@@ -93,8 +93,8 @@ php artisan test
 
 一般ユーザーと管理者で認証を分離しています。
 
-・users テーブル
-・admins テーブル
+- users テーブル
+- admins テーブル
 
 管理者認証には admin guard を使用しています。
 
@@ -142,12 +142,12 @@ password: password
 
 # 工夫した点
 
-・一般ユーザーと管理者で認証を完全分離
-・admin guard を利用した権限制御
-・users / admins テーブル分離構成
-・Blade + CSS分離による画面ごとの責務整理
-・Featureテストによる主要機能の品質担保
-・Docker環境による開発環境統一
-・Mailtrapを利用したメール認証確認
+- 一般ユーザーと管理者で認証を完全分離
+- admin guard を利用した権限制御
+- users / admins テーブル分離構成
+- Blade + CSS分離による画面ごとの責務整理
+- Featureテストによる主要機能の品質担保
+- Docker環境による開発環境統一
+- Mailtrapを利用したメール認証確認
 
 ---
