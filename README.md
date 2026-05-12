@@ -116,19 +116,21 @@ php artisan test
 | 勤怠登録   | /attendance                    |
 | 勤怠一覧   | /attendance/list               |
 | 勤怠詳細   | /attendance/detail/{id}        |
-| 修正申請一覧 | /stamp_correction_request/list |
+| 申請一覧   | /stamp_correction_request/list |
 
 ## 管理者
 
 | 機能        | URL                                                               |
 | --------- | ----------------------------------------------------------------- |
-| 管理者ログイン   | /admin/login                                                      |
-| 日次勤怠一覧    | /admin/attendance/list                                            |
+| ログイン       | /admin/login                                                      |
+| 勤怠一覧       | /admin/attendance/list                                            |
 | スタッフ一覧    | /admin/staff/list                                                 |
 | スタッフ別勤怠一覧 | /admin/attendance/staff/{id}                                      |
-| 勤怠詳細      | /admin/attendance/{id}                                            |
-| 修正申請一覧    | /stamp_correction_request/list                                    |
+| 勤怠詳細       | /admin/attendance/{id}                                            |
+| 申請一覧       | /stamp_correction_request/list                                    |
 | 修正申請承認    | /stamp_correction_request/approve/{attendance_correct_request_id} |
+
+※　申請一覧画面は一般ユーザーと管理者で同じパスを使用。認証ミドルウェアで区別
 
 ---
 
