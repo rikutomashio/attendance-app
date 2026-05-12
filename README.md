@@ -29,29 +29,104 @@ Laravelを用いて作成した勤怠管理アプリです。
 
 ---
 
-# 環境構築
+## 環境構築
 
-## Dockerビルド
+1.リポジトリをクローン
 
-git clone git@github.com:******/******.git
+git clone https://github.com/rikutomashio/attendance-app.git
+
 cd attendance-app
+
+2.Docker起動
+
 docker-compose up -d --build
 
-## Laravel環境構築
+
+3.PHPコンテナに入る
 
 docker-compose exec php bash
 
+4.Laravel初期設定
+
 composer install
+
 cp .env.example .env
+
 php artisan key:generate
 
-## データベース設定
+5.DB設定（.env）
 
-php artisan migrate --seed
+DB_CONNECTION=mysql
 
-## シンボリックリンク作成
+DB_HOST=mysql
+
+DB_PORT=3306
+
+DB_DATABASE=laravel_db
+
+DB_USERNAME=laravel_user
+
+DB_PASSWORD=laravel_pass
+
+※.envのDB設定を必ず上記の内容に変更してください
+
+6.メール認証設定（Mailtrap）
+
+本アプリではメール認証機能にMailtrapを使用しています。
+
+ Mailtrapにアクセスし、アカウントを作成してください  
+   https://mailtrap.io/
+
+ Inboxを作成し、「SMTP Settings」を開きます
+
+ 表示されているSMTP情報をコピーし、.envに以下を設定してください
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=ご自身のユーザー名
+MAIL_PASSWORD=ご自身のパスワード
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=test@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+ 設定後、以下コマンドを実行してください
+
+php artisan config:clear
+
+ 認証メールはMailtrapのInbox上で確認できます
+
+7.マイグレーション（シーディングも含めて）
+
+php artisan migrate:fresh --seed 
+
+※既存データを削除して初期状態から構築されます
+
+8.ストレージリンク
 
 php artisan storage:link
+
+9.動作確認
+
+- アプリケーション
+  - http://localhost
+
+- phpMyAdmin
+  - http://localhost:8080
+
+---
+
+## 初期データ
+
+シーディングにより以下のテストユーザーが作成されます。
+
+- 管理者
+メールアドレス: admin@test.com  
+パスワード: password
+
+- 一般ユーザー
+メールアドレス: user@test.com  
+パスワード: password
 
 ---
 
@@ -157,5 +232,11 @@ password: password
 - Featureテストによる主要機能の品質担保
 - Docker環境による開発環境統一
 - Mailtrapを利用したメール認証確認
+- 勤怠修正申請時に変更前(before_*)・変更後(requested_*) を保持し、
+  差分履歴を確認できる設計を採用
+- 修正申請承認者は admins テーブルへ外部キー制約を設定し、
+  管理者のみ承認可能な構成を実装
+- user_id と work_date にユニーク制約を設定し、
+  1日1勤怠レコードとなるよう設計
 
 ---
