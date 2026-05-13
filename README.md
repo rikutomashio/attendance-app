@@ -175,7 +175,7 @@ php artisan test
 
 # ER図
 
-![ER図](docs/images/er-diagram(1).png)
+![ER図](docs/images/er-diagram.png)
 
 ---
 
