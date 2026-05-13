@@ -175,7 +175,7 @@ php artisan test
 
 # ER図
 
-※ ER図を追加予定
+![ER図](docs/images/er-diagram(1).png)
 
 ---
 
