@@ -1,0 +1,114 @@
+/* ===============================
+   勤怠一覧ページ専用
+=============================== */
+
+.attendance-page .month-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+/* 左 */
+.attendance-page .month-nav> :first-child {
+    grid-column: 1;
+    justify-self: start;
+}
+
+/* 中央 */
+.attendance-page .month-nav> :nth-child(2) {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* 右 */
+.attendance-page .month-nav> :last-child {
+    grid-column: 3;
+    justify-self: end;
+}
+
+/* CSVボタン：右下配置（非固定） */
+.attendance-page .csv-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+
+/* ===============================
+   一覧テーブル共通
+=============================== */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 最終行の横線削除 */
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ===============================
+   詳細リンク
+=============================== */
+
+.detail-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.detail-link:hover {
+    opacity: 0.7;
+}
+
+
+/* ===============================
+   PG10 スタッフ一覧専用
+=============================== */
+
+.staff-table {
+    border-collapse: collapse;
+}
+
+.staff-table th,
+.staff-table td {
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+}
+
+.staff-table th {
+    background-color: #fff !important;
+}
+
+/* ===============================
+   レスポンシブ補助
+=============================== */
+
+@media screen and (max-width: 1540px) {
+
+    .attendance-page {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .attendance-page .month-nav {
+        gap: 16px;
+    }
+
+    .table {
+        min-width: 900px;
+    }
+}

@@ -1,36 +1,93 @@
-@if (!$attendance || !$attendance->clock_in_at)
-<form method="POST" action="{{ route('attendance.start') }}">
-    @csrf
-    <button type="submit">出勤</button>
-</form>
-@endif
+@extends('layouts.app')
 
-@if ($attendance && $attendance->clock_in_at && !$attendance->clock_out_at)
-<form method="POST" action="{{ route('attendance.end') }}">
-    @csrf
-    <button type="submit">退勤</button>
-</form>
-@endif
+@section('title', '勤怠登録')
 
-@if ($attendance && $attendance->clock_out_at)
-<p>本日の勤務は終了しています</p>
-@endif
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/attendance-register.css') }}">
+@endsection
 
-{{-- 出勤中かつ休憩していない --}}
-@if ($attendance && $attendance->clock_in_at && !$attendance->clock_out_at &&
-!$attendance->breaks->whereNull('break_end_at')->count())
+@section('content')
 
-<form method="POST" action="{{ route('break.start') }}">
-    @csrf
-    <button type="submit">休憩開始</button>
-</form>
-@endif
+<div class="register-container">
 
-{{-- 休憩中 --}}
-@if ($attendance && $attendance->breaks->whereNull('break_end_at')->count())
+    {{-- ステータス --}}
+    <div class="status-text">
+        @if($status === 'off')
+        勤務外
+        @elseif($status === 'working')
+        出勤中
+        @elseif($status === 'break')
+        休憩中
+        @elseif($status === 'done')
+        退勤済
+        @endif
+    </div>
 
-<form method="POST" action="{{ route('break.end') }}">
-    @csrf
-    <button type="submit">休憩終了</button>
-</form>
-@endif
+    {{-- 現在時刻 --}}
+    <div class="time-box">
+        <div class="date">
+            {{ now()->isoFormat('YYYY年MM月DD日（ddd）') }}
+        </div>
+        <div class="time">
+            {{ now()->format('H:i') }}
+        </div>
+    </div>
+
+    {{-- メッセージ --}}
+    @if(session('message'))
+    <div class="message success">
+        {{ session('message') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="message error">
+        {{ session('error') }}
+    </div>
+    @endif
+
+    {{-- 操作 --}}
+    <div class="action-area">
+
+        @if($status === 'off')
+        <form method="POST" action="{{ route('attendance.start') }}">
+            @csrf
+            <button type="submit" class="btn btn-primary btn-large">
+                出勤
+            </button>
+        </form>
+        @endif
+
+        @if($status === 'working')
+        <form method="POST" action="{{ route('attendance.end') }}">
+            @csrf
+            {{-- ★ 退勤も黒に統一 --}}
+            <button type="submit" class="btn btn-primary btn-large">
+                退勤
+            </button>
+        </form>
+
+        <form method="POST" action="{{ route('break.start') }}">
+            @csrf
+            {{-- ★ 白ボタンに変更 --}}
+            <button type="submit" class="btn btn-outline btn-large">
+                休憩入
+            </button>
+        </form>
+        @endif
+
+        @if($status === 'break')
+        <form method="POST" action="{{ route('break.end') }}">
+            @csrf
+            {{-- ★ 白ボタンに変更 --}}
+            <button type="submit" class="btn btn-outline btn-large">
+                休憩戻
+            </button>
+        </form>
+        @endif
+
+    </div>
+
+</div>
+
+@endsection

@@ -56,6 +56,14 @@ class AttendanceUpdateRequest extends FormRequest
                     );
                 }
 
+                // ★ 休憩開始 > 休憩終了
+                if ($break['start_time'] > $break['end_time']) {
+                    $validator->errors()->add(
+                        "breaks.$index.start_time",
+                        '休憩時間が不適切な値です'
+                    );
+                }
+
                 // 休憩終了が退勤より後
                 if ($break['end_time'] > $this->end_time) {
                     $validator->errors()->add(

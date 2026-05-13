@@ -1,0 +1,298 @@
+/* ===============================
+   レイアウト共通
+=============================== */
+
+/* コンテナ */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ===============================
+   ヘッダー
+=============================== */
+
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ===============================
+   ナビゲーション
+=============================== */
+
+.nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #3490dc;
+}
+
+.logout:hover {
+    color: #e3342f;
+}
+
+.nav-form {
+    margin: 0;
+}
+
+.nav-form button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+}
+
+/* ===============================
+   メイン
+=============================== */
+
+.main {
+    padding: 20px 0;
+}
+
+/* ===============================
+   フッター
+=============================== */
+
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 12px;
+    color: #777;
+    margin-top: 40px;
+}
+
+/* ===============================
+   ボタン（最重要）
+=============================== */
+
+/* 土台（全ボタン共通） */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* ホバー共通 */
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* メイン（黒ボタン） */
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+/* =========================
+   白ボタン（休憩用）
+========================= */
+.btn-outline {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+/* ホバー */
+.btn-outline:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* セカンダリ */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* 危険（削除・却下用） */
+.btn-danger {
+    background-color: #e3342f;
+    color: #fff;
+}
+
+/* 承認ボタン用（デカくする） */
+.btn-large {
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ===============================
+   フォーム
+=============================== */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #3490dc;
+}
+
+.error {
+    color: #e3342f;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* ===============================
+   メッセージ
+=============================== */
+
+.message {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.message.success {
+    color: green;
+}
+
+.message.error {
+    color: #e3342f;
+}
+
+/* ===============================
+   テーブル
+=============================== */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.table thead {
+    background-color: #f5f5f5;
+}
+
+.table tfoot {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+/* ===============================
+   月ナビ
+=============================== */
+
+.month-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.month-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===============================
+   休憩行
+=============================== */
+
+.break-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.break-row .input {
+    width: auto;
+}
+
+/* ===============================
+   ステータス
+=============================== */
+
+.status {
+    font-weight: bold;
+}
+
+.status.pending {
+    color: orange;
+}
+
+.status.approved {
+    color: green;
+}
+
+.status.rejected {
+    color: #e3342f;
+}
+
+/* ===============================
+   リセット・レスポンシブ補助
+=============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}

@@ -41,7 +41,6 @@ cd attendance-app
 
 docker-compose up -d --build
 
-
 - 3.PHPコンテナに入る
 
 docker-compose exec php bash
@@ -74,12 +73,12 @@ DB_PASSWORD=laravel_pass
 
 本アプリではメール認証機能にMailtrapを使用しています。
 
- Mailtrapにアクセスし、アカウントを作成してください  
-   https://mailtrap.io/
+Mailtrapにアクセスし、アカウントを作成してください  
+ https://mailtrap.io/
 
- Inboxを作成し、「SMTP Settings」を開きます
+Inboxを作成し、「SMTP Settings」を開きます
 
- 表示されているSMTP情報をコピーし、.envに以下を設定してください
+表示されているSMTP情報をコピーし、.envに以下を設定してください
 
 MAIL_MAILER=smtp
 MAIL_HOST=sandbox.smtp.mailtrap.io
@@ -90,15 +89,15 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=任意のメールアドレス
 MAIL_FROM_NAME="${APP_NAME}"
 
- 設定後、以下コマンドを実行してください
+設定後、以下コマンドを実行してください
 
 php artisan config:clear
 
- 認証メールはMailtrapのInbox上で確認できます
+認証メールはMailtrapのInbox上で確認できます
 
 - 7.マイグレーション（シーディングも含めて）
 
-php artisan migrate:fresh --seed 
+php artisan migrate:fresh --seed
 
 ※既存データを削除して初期状態から構築されます
 
@@ -121,23 +120,22 @@ php artisan storage:link
 シーディングにより以下のテストユーザーが作成されます。
 
 - 管理者
-メールアドレス: admin@test.com  
-パスワード: password
+  メールアドレス: admin@test.com  
+  パスワード: password
 
 - 一般ユーザー
-メールアドレス: user@test.com  
-パスワード: password
+  メールアドレス: user@test.com  
+  パスワード: password
 
 ---
 
 # 使用技術
 
-
-- PHP 8.1 
-- Laravel 8.75 
-- Laravel Fortify 
-- MySQL 8.0.26 
-- Mailtrap 
+- PHP 8.1
+- Laravel 8.75
+- Laravel Fortify
+- MySQL 8.0.26
+- Mailtrap
 - Feature Test
 - FormRequest
 
@@ -145,10 +143,8 @@ php artisan storage:link
 
 # 開発環境
 
-- アプリケーション    [http://localhost](http://localhost)           
-  
-- phpMyAdmin  [http://localhost:8080](http://localhost:8080) 
-
+- アプリケーション [http://localhost](http://localhost)
+- phpMyAdmin [http://localhost:8080](http://localhost:8080)
 
 ---
 
@@ -184,25 +180,25 @@ php artisan test
 ## 一般ユーザー
 
 | 機能     | URL                            |
-| ------ | ------------------------------ |
-| 会員登録   | /register                      |
-| ログイン   | /login                         |
-| 勤怠登録   | /attendance                    |
-| 勤怠一覧   | /attendance/list               |
-| 勤怠詳細   | /attendance/detail/{id}        |
-| 申請一覧   | /stamp_correction_request/list |
+| -------- | ------------------------------ |
+| 会員登録 | /register                      |
+| ログイン | /login                         |
+| 勤怠登録 | /attendance                    |
+| 勤怠一覧 | /attendance/list               |
+| 勤怠詳細 | /attendance/detail/{id}        |
+| 申請一覧 | /stamp_correction_request/list |
 
 ## 管理者
 
-| 機能        | URL                                                               |
-| --------- | ----------------------------------------------------------------- |
-| ログイン       | /admin/login                                                      |
-| 勤怠一覧       | /admin/attendance/list                                            |
-| スタッフ一覧    | /admin/staff/list                                                 |
+| 機能               | URL                                                               |
+| ------------------ | ----------------------------------------------------------------- |
+| ログイン           | /admin/login                                                      |
+| 勤怠一覧           | /admin/attendance/list                                            |
+| スタッフ一覧       | /admin/staff/list                                                 |
 | スタッフ別勤怠一覧 | /admin/attendance/staff/{id}                                      |
-| 勤怠詳細       | /admin/attendance/{id}                                            |
-| 申請一覧       | /stamp_correction_request/list                                    |
-| 修正申請承認    | /stamp_correction_request/approve/{attendance_correct_request_id} |
+| 勤怠詳細           | /admin/attendance/{id}                                            |
+| 申請一覧           | /stamp_correction_request/list                                    |
+| 修正申請承認       | /stamp_correction_request/approve/{attendance_correct_request_id} |
 
 ※　申請一覧画面は一般ユーザーと管理者で同じパスを使用。認証ミドルウェアで区別
 
@@ -217,7 +213,7 @@ php artisan test
 - Featureテストによる主要機能の品質担保
 - Docker環境による開発環境統一
 - Mailtrapを利用したメール認証確認
-- 勤怠修正申請時に変更前(before_*)・変更後(requested_*) を保持し、
+- 勤怠修正申請時に変更前(before*\*)・変更後(requested*\*) を保持し、
   差分履歴を確認できる設計を採用
 - 修正申請承認者は admins テーブルへ外部キー制約を設定し、
   管理者のみ承認可能な構成を実装
@@ -229,4 +225,3 @@ php artisan test
 ## 作成者
 
 名前 真尾陸人
-

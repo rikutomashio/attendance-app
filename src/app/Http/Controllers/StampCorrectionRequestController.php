@@ -3,47 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Attendance;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\AttendanceCorrectRequest;
 
 class StampCorrectionRequestController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $user = Auth::user();
+        // 🔥 管理者
+        if (auth('admin')->check()) {
 
-        if ($user->is_admin) {
+            $data = app(\App\Http\Controllers\AdminCorrectionController::class)->getListData();
 
-            // 👑 管理者：全ユーザー
-            $pendingRequests = Attendance::with('user')
-                ->where('status', 'pending')
-                ->orderBy('created_at', 'desc')
-                ->get();
-
-            $approvedRequests = Attendance::with('user')
-                ->where('status', 'approved')
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else {
-
-            // 👤 一般ユーザー：自分のみ
-            $pendingRequests = Attendance::with('user') // ← ここ追加
-                ->where('user_id', $user->id)
-                ->where('status', 'pending')
-                ->orderBy('created_at', 'desc')
-                ->get();
-
-            $approvedRequests = Attendance::with('user') // ← ここ追加
-                ->where('user_id', $user->id)
-                ->where('status', 'approved')
-                ->orderBy('created_at', 'desc')
-                ->get();
+            return view('stamp_correction_request.admin_list', $data);
         }
 
-        return view('stamp_correction_request.list', compact(
-            'pendingRequests',
-            'approvedRequests'
-        ));
+        // ----------------------------
+        // 一般ユーザー
+        // ----------------------------
+
+        $status = $request->query('status', 'pending');
+
+        if (!in_array($status, ['pending', 'approved'])) {
+            $status = 'pending';
+        }
+
+        $requests = AttendanceCorrectRequest::with(['attendance', 'user'])
+            ->where('user_id', Auth::id())
+            ->where('status', $status)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('stamp_correction_request.user_list', compact('requests', 'status'));
     }
 }

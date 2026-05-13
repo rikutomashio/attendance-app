@@ -1,0 +1,158 @@
+/* =========================
+   コンテナ
+========================= */
+.detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* =========================
+   ヘッダー
+========================= */
+.detail-header {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   本体（カード）
+========================= */
+.detail-body {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+/* =========================
+   フォーム行
+========================= */
+.form-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    width: 150px;
+    font-weight: bold;
+}
+
+.form-value {
+    flex: 1;
+}
+
+/* =========================
+   横並び共通
+========================= */
+.inline-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 日付専用 */
+.date-group {
+    gap: 10px;
+}
+
+.date-group span:last-child {
+    margin-left: 100px;
+}
+
+/* =========================
+   入力共通
+========================= */
+.form-value input,
+.form-value textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.form-value textarea {
+    min-height: 80px;
+}
+
+/* =========================
+   時間入力サイズ
+========================= */
+.inline-group input[type="time"] {
+    width: 120px;
+}
+
+/* =========================
+   フッター（右寄せ）
+========================= */
+.detail-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* =========================
+   メッセージ
+========================= */
+.pending-message {
+    color: red;
+    font-size: 13px;
+}
+
+/* =========================
+   ボタン
+========================= */
+.detail-actions button {
+    margin-left: 10px;
+}
+
+/* =========================
+   エラー
+========================= */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* =========================
+   レスポンシブ補助
+========================= */
+
+@media screen and (max-width: 1540px) {
+
+    .detail-container {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .form-row {
+        gap: 16px;
+    }
+
+    .form-label {
+        width: 120px;
+        flex-shrink: 0;
+    }
+
+    .inline-group {
+        flex-wrap: wrap;
+    }
+
+    .inline-group input[type="time"] {
+        width: 100px;
+    }
+
+    .date-group span:last-child {
+        margin-left: 24px;
+    }
+
+    .detail-footer {
+        flex-wrap: wrap;
+    }
+
+    .form-value textarea {
+        width: 100%;
+    }
+}

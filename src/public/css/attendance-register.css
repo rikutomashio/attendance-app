@@ -1,0 +1,76 @@
+/* =========================
+   全体中央寄せ
+========================= */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 24px;
+}
+
+/* =========================
+   ステータス
+========================= */
+.status-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   時刻表示
+========================= */
+.time-box {
+    text-align: center;
+}
+
+.time-box .date {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.time-box .time {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* =========================
+   ボタンエリア
+========================= */
+.action-area {
+    display: flex;
+    gap: 16px;
+}
+
+/* フォームの余白リセット */
+.action-area form {
+    margin: 0;
+}
+
+/* =========================
+   レスポンシブ補助
+========================= */
+
+@media screen and (max-width: 1540px) {
+
+    .register-container {
+        width: 100%;
+        padding: 0 16px;
+        text-align: center;
+    }
+
+    .time-box .time {
+        font-size: 36px;
+        word-break: break-word;
+    }
+
+    .action-area {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .action-area .btn {
+        min-width: 140px;
+    }
+}
