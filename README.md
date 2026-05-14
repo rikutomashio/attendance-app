@@ -204,6 +204,100 @@ php artisan test
 
 ---
 
+## テーブル構成
+
+### users テーブル
+
+| カラム名          | 型              | 説明           |
+| ----------------- | --------------- | -------------- |
+| id                | bigint unsigned | ユーザーID     |
+| name              | varchar(255)    | ユーザー名     |
+| email             | varchar(255)    | メールアドレス |
+| email_verified_at | timestamp       | メール認証日時 |
+| password          | varchar(255)    | パスワード     |
+| role              | varchar(255)    | 権限           |
+| created_at        | timestamp       | 作成日時       |
+| updated_at        | timestamp       | 更新日時       |
+
+---
+
+### admins テーブル
+
+| カラム名       | 型              | 説明                 |
+| -------------- | --------------- | -------------------- |
+| id             | bigint unsigned | 管理者ID             |
+| name           | varchar(255)    | 管理者名             |
+| email          | varchar(255)    | メールアドレス       |
+| password       | varchar(255)    | パスワード           |
+| remember_token | varchar(100)    | ログイン保持トークン |
+| created_at     | timestamp       | 作成日時             |
+| updated_at     | timestamp       | 更新日時             |
+
+---
+
+### attendances テーブル
+
+| カラム名     | 型              | 説明       |
+| ------------ | --------------- | ---------- |
+| id           | bigint unsigned | 勤怠ID     |
+| user_id      | bigint unsigned | ユーザーID |
+| work_date    | date            | 勤務日     |
+| clock_in_at  | timestamp       | 出勤日時   |
+| clock_out_at | timestamp       | 退勤日時   |
+| reason       | text            | 修正理由   |
+| created_at   | timestamp       | 作成日時   |
+| updated_at   | timestamp       | 更新日時   |
+
+---
+
+### break_times テーブル
+
+| カラム名       | 型              | 説明         |
+| -------------- | --------------- | ------------ |
+| id             | bigint unsigned | 休憩ID       |
+| attendance_id  | bigint unsigned | 勤怠ID       |
+| break_start_at | timestamp       | 休憩開始日時 |
+| break_end_at   | timestamp       | 休憩終了日時 |
+| created_at     | timestamp       | 作成日時     |
+| updated_at     | timestamp       | 更新日時     |
+
+---
+
+### attendance_correct_requests テーブル
+
+| カラム名               | 型              | 説明           |
+| ---------------------- | --------------- | -------------- |
+| id                     | bigint unsigned | 修正申請ID     |
+| attendance_id          | bigint unsigned | 勤怠ID         |
+| user_id                | bigint unsigned | 申請ユーザーID |
+| before_clock_in_at     | timestamp       | 修正前出勤日時 |
+| before_clock_out_at    | timestamp       | 修正前退勤日時 |
+| requested_clock_in_at  | timestamp       | 修正後出勤日時 |
+| requested_clock_out_at | timestamp       | 修正後退勤日時 |
+| status                 | enum            | 申請状態       |
+| approved_by            | bigint unsigned | 承認管理者ID   |
+| approved_at            | timestamp       | 承認日時       |
+| reason                 | text            | 修正理由       |
+| created_at             | timestamp       | 作成日時       |
+| updated_at             | timestamp       | 更新日時       |
+
+---
+
+### attendance_correct_request_break_times テーブル
+
+| カラム名                      | 型              | 説明               |
+| ----------------------------- | --------------- | ------------------ |
+| id                            | bigint unsigned | 修正休憩ID         |
+| attendance_correct_request_id | bigint unsigned | 修正申請ID         |
+| before_break_start_at         | timestamp       | 修正前休憩開始日時 |
+| before_break_end_at           | timestamp       | 修正前休憩終了日時 |
+| requested_break_start_at      | timestamp       | 修正後休憩開始日時 |
+| requested_break_end_at        | timestamp       | 修正後休憩終了日時 |
+| created_at                    | timestamp       | 作成日時           |
+| updated_at                    | timestamp       | 更新日時           |
+
+---
+
 # 工夫した点
 
 - 一般ユーザーと管理者で認証を完全分離
