@@ -150,11 +150,30 @@ php artisan storage:link
 
 # テスト
 
-Featureテストを中心に実装しています。
+Featureテストを中心に実装しています。  
+Unitテストは実装していません。
+
+## テスト用DB作成
+
+テスト実行前に、MySQLへテスト用DBを作成してください。
+
+```bash
+docker compose exec mysql bash
+```
+
+```bash
+mysql -u root -p
+```
+
+```sql
+CREATE DATABASE laravel_kintai_test;
+```
 
 ## テスト実行
 
-php artisan test
+```bash
+docker compose exec php php artisan test
+```
 
 ---
 
