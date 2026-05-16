@@ -237,22 +237,22 @@ class AttendanceController extends Controller
                 'status' => 'pending',
             ]);
 
-            foreach ($attendance->breakTimes as $index => $originalBreak) {
-
-                $newBreak = $request->breaks[$index] ?? null;
-
-                if (!$newBreak) continue;
+            foreach ($request->breaks as $index => $newBreak) {
 
                 if (empty($newBreak['start_time']) || empty($newBreak['end_time'])) {
                     continue;
                 }
 
-                $correctRequest->breakTimes()->create([
-                    // 🔥 before（元データ）
-                    'before_break_start_at' => $originalBreak->break_start_at,
-                    'before_break_end_at' => $originalBreak->break_end_at,
+                // 元休憩（存在する場合のみ）
+                $originalBreak = $attendance->breakTimes[$index] ?? null;
 
-                    // 🔥 after（申請データ）
+                $correctRequest->breakTimes()->create([
+
+                    // before
+                    'before_break_start_at' => $originalBreak?->break_start_at,
+                    'before_break_end_at' => $originalBreak?->break_end_at,
+
+                    // after
                     'requested_break_start_at' => Carbon::parse($newBreak['start_time']),
                     'requested_break_end_at' => Carbon::parse($newBreak['end_time']),
                 ]);
